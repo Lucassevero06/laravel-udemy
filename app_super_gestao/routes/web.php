@@ -13,22 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PrincipalController@principal');
+Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/login', function () {return 'login';})->name('site.login');
 
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
+Route::prefix('/app')->group(function () {
+    Route::get('/clientes', function () {return 'clientes';})->name('app.clientes');
+    Route::get('/fornecedores', function () {return 'fornecedores';})->name('app.fornecedores');
+    Route::get('/produtos', function () {return 'produtos';})->name('app.produtos');
+});
 
-Route::get('/contato', 'ContatoController@contato');
-// nome, categoria, assunto, mensagem
+Route::get('rota1', function () {
+    echo 'Rota 1';
+})->name('site.rota1');
 
-Route::get('/contato/{nome}/{categoria?}/{assunto?}/{mensagem?}',
-    function (
-        string $nome,
-        string $categoria = 'Sem categoria',
-        string $assunto = 'Assunto não informado',
-        string $mensagem = 'Mensagem não informada') {
-    echo
-        "Nome: $nome <br>
-        Categoria: $categoria <br>
-        Assunto: $assunto <br>
-        Mensagem: $mensagem";
+Route::get('rota2', function () {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+//Route::redirect('/rota2', '/rota1');
+
+// o fallback serve para que você possa personalizar a pagina de 404 not found da forma que desejar
+Route::fallback(function () {
+    echo 'A rota acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir para a página inicial.';
 });
