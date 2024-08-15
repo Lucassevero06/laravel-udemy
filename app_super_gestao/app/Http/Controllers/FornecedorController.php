@@ -13,18 +13,26 @@ class FornecedorController extends Controller
             0 => [
                 'nome' => 'Fornecedor 1',
                 'status' => 'N',
-                'cnpj' => '00',
+                'cnpj' => '11.111.111/1111-11',
+                'ddd' => '11', // São Paulo
+                'telefone' => '1111-1111',
             ],
             1 => [
                 'nome' => 'Fornecedor 2',
                 'status' => 'S',
+                'cnpj' => null,
+                'ddd' => '85', // fortaleza
+                'telefone' => '2222-2222',
+            ],
+            2 => [
+                'nome' => 'Fornecedor 3',
+                'status' => 'S',
+                'cnpj' => null, // juiz de fora
+                'ddd' => '32',
+                'telefone' => '3333-3333',
             ]
         ];
 
-//        condicao ? se verdade : se falso
-//        condicao ? se verdade : (condicao ? se verdade : se falso)
-        $msg = isset($fornecedores[0]['cnpj']) ? 'CNPJ INFORMADO' : 'CNPJ NAO INFORMADO';
-        echo $msg;
         return view('app.fornecedor.index', ['fornecedores' => $fornecedores]);
     }
 }

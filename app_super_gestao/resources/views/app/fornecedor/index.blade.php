@@ -7,14 +7,13 @@
 {{--@dd($fornecedores)--}}
 
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[0]['nome'] }} <br>
-    Status: {{ $fornecedores[0]['status'] }} <br>
-    @isset($fornecedores[0]['cnpj'])
-        CNPJ: {{ $fornecedores[0]['cnpj'] }}
-        @empty($fornecedores[0]['cnpj'])
-            Vazio
-        @endempty
-    @endisset
+    @forelse($fornecedores as $indice => $fornecedor)
+        Fornecedor: @{{ $fornecedor['nome'] }} <br>
+        Status: @{{ $fornecedor['status'] }} <br>
+        CNPJ: @{{ $fornecedor['cnpj'] ?? 'Cnpj não preenchido' }} <br>
+        Telefone: (@{{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}} <br>
+        <hr>
+    @empty
+        <p>Nenhum fornecedor encontrado</p>
+    @endforelse
 @endisset
-
-
