@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        // toda vez que o db:seed for executado, tudo que tiver aqui será executado
+        $this->call(FornecedorSeeder::class);
+        $this->call(SiteContatoSeeder::class);
     }
 }
