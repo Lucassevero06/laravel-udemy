@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         // toda vez que o db:seed for executado, tudo que tiver aqui será executado
         $this->call(FornecedorSeeder::class);
         $this->call(SiteContatoSeeder::class);
+        $this->call(MotivoContatoSeeder::class);
     }
 }
