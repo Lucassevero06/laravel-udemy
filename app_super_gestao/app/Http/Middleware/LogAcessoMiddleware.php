@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\LogAcesso;
 use Closure;
+use function dd;
 
 class LogAcessoMiddleware
 {
@@ -17,6 +19,10 @@ class LogAcessoMiddleware
     {
         //$request - manipular
         //return $next($request);
+//        dd($request);
+        $ip = $request->server->get('REMOTE_ADDR');
+        $rota = $request->getRequestUri();
+        LogAcesso::create(['log' => "IP $ip requisitou a rota $rota"]);
         return Response('Chegamos no middleware e finalizamos no proprio middleware');
     }
 }
