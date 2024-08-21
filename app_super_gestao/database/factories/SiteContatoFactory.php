@@ -10,7 +10,8 @@ $factory->define(SiteContato::class, function (Faker $faker) {
         'nome' => $faker->name,
         'telefone' => $faker->tollFreePhoneNumber,
         'email' => $faker->unique()->email,
-        'motivo_contatos_id' => $faker->numberBetween(1,3),
+        'motivo_contatos_id' => $faker->numberBetween(1,3),  // IDs válidos
         'mensagem' => $faker->text(200)
     ];
 });
+
