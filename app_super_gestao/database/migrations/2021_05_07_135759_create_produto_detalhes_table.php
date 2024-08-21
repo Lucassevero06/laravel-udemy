@@ -14,6 +14,7 @@ class CreateProdutoDetalhesTable extends Migration
     public function up()
     {
         Schema::create('produto_detalhes', function (Blueprint $table) {
+            //colunas
             $table->id();
             $table->unsignedBigInteger('produto_id');
             $table->float('comprimento', 8, 2);

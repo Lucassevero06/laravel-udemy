@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Fornecedor;
-use Illuminate\Support\Facades\DB;
 
 class FornecedorSeeder extends Seeder
 {
@@ -12,8 +11,8 @@ class FornecedorSeeder extends Seeder
      * @return void
      */
     public function run()
-    { // diversas formas de inserir dados usando seeders
-        //instanciando um objeto do tipo fornecedor
+    {
+        //instanciando o objeto
         $fornecedor = new Fornecedor();
         $fornecedor->nome = 'Fornecedor 100';
         $fornecedor->site = 'fornecedor100.com.br';
@@ -21,8 +20,7 @@ class FornecedorSeeder extends Seeder
         $fornecedor->email = 'contato@fornecedor100.com.br';
         $fornecedor->save();
 
-        //usando diretamente o metodo create(atenção para o atributo fillable da classe) da model
-        // se usar o create() voce precisa inserir o $fillable na model
+        //o método create (atenção para o atributo fillable da classe)
         Fornecedor::create([
             'nome' => 'Fornecedor 200',
             'site' => 'fornecedor200.com.br',
@@ -30,7 +28,7 @@ class FornecedorSeeder extends Seeder
             'email' => 'contato@fornecedor200.com.br'
         ]);
 
-        //inserindo diretamente no banco de dados
+        //insert
         DB::table('fornecedores')->insert([
             'nome' => 'Fornecedor 300',
             'site' => 'fornecedor300.com.br',

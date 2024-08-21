@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // toda vez que o db:seed for executado, tudo que tiver aqui será executado
+        // $this->call(UserSeeder::class);
         $this->call(FornecedorSeeder::class);
         $this->call(SiteContatoSeeder::class);
         $this->call(MotivoContatoSeeder::class);
