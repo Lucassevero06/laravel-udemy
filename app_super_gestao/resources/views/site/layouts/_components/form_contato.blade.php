@@ -3,7 +3,7 @@
     @csrf
     <input name="nome" value="{{ old('nome') }}" type="text" placeholder="Nome" class="{{ $classe }}">
 
-    {{ $errors->has('telefone') ? $errors->first('telefone') : '' }}
+    {{ $errors->has('nome') ? $errors->first('nome') : '' }}
 
     <br>
     <input name="telefone" value="{{ old('telefone') }}" type="text" placeholder="Telefone" class="{{ $classe }}">
