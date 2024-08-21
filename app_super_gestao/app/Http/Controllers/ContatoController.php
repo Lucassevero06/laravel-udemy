@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SiteContato;
 use App\MotivoContato;
+use function redirect;
 
 class ContatoController extends Controller
 {
@@ -19,12 +20,14 @@ class ContatoController extends Controller
 
         //realizar a validação dos dados do formulário recebidos no request
         $request->validate([
-            'nome' => 'required|min:3|max:40',
+            'nome' => 'required|min:3|max:40|unique:site_contatos',
             'telefone' => 'required',
-            'email' => 'required|email',
-            'motivo_contato' => 'required',
+            'email' => 'email',
+            'motivo_contatos_id' => 'required',
             'mensagem' => 'required|max:2000'
         ]);
-        // SiteContato::create($request->all());
+
+        SiteContato::create($request->all());
+        return redirect()->route('site.index');
     }
 }
