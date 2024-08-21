@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use function print_r;
+use function redirect;
 use function view;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('site.login', ['titulo' => 'Login']);
+        $erro = $request->get('erro');
+        return view('site.login', ['titulo' => 'Login', 'erro', $erro]);
     }
 
     public function autenticar(Request $request)
@@ -44,7 +46,7 @@ class LoginController extends Controller
         if (isset($usuario->name)) {
             echo "Usuario existe";
         } else {
-            echo "Usuario não existe";
+            return redirect()->route('site.login', ['erro' => 1]);
         }
 
     }
