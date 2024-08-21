@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use function view;
+
+class LoginController extends Controller
+{
+    public function index()
+    {
+        return view('site.login', ['titulo' => 'Login']);
+    }
+
+    public function autenticar()
+    {
+        return 'Chegamos até aqui!';
+    }
+}
