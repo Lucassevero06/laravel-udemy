@@ -31,7 +31,21 @@ class LoginController extends Controller
 
         $request->validate($regras, $feedback);
 
-        print_r($request->all());
+        $email = $request->get('usuario');
+        $password = $request->get('senha');
+
+        $user = new User();
+
+        $usuario = $user->where('email', $email)
+                        ->where('password', $password)
+                        ->get()
+                        ->first();
+
+        if (isset($usuario->name)) {
+            echo "Usuario existe";
+        } else {
+            echo "Usuario não existe";
+        }
 
     }
 }
