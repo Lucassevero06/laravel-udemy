@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use \Illuminate\Http\Request;
 
 class AutenticacaoMiddleware
 {
@@ -13,8 +14,24 @@ class AutenticacaoMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(\Illuminate\Http\Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $metodo_autenticacao, $perfil)
     {
+        echo $metodo_autenticacao.' - '.$perfil.'<br>';
+
+        if ($metodo_autenticacao == 'padrao') {
+            echo 'Verificar usuario e senha no banco de dados '.$perfil.'<br>';
+        }
+
+        if ($metodo_autenticacao == 'ldap') {
+            echo 'Verificar usuario e senha no AD '.$perfil.'<br>';
+        }
+
+        if ($perfil == 'visitante') {
+            echo 'Exibir alguns recursos<br>';
+        } else {
+            echo 'Carregar o perfil do banco de dados<br>';
+        }
+
         if (false) {
             return $next($request);
         } else {
