@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use function dd;
 use function print_r;
 use function redirect;
+use function session_destroy;
 use function view;
 
 class LoginController extends Controller
@@ -68,6 +69,7 @@ class LoginController extends Controller
 
     public function sair()
     {
-        echo "Saiu";
+        session_destroy();
+        return redirect()->route('site.index');
     }
 }
