@@ -9,7 +9,7 @@
         </div>
 
         <div class="informacao-pagina">
-            <div style="width: 50%; margin-left: auto; margin-right: auto">
+            <div style="width: 400px; margin-left: auto; margin-right: auto">
 
                 <form action="{{ route('site.login') }}" method="post">
                     @csrf
