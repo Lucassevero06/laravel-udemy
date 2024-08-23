@@ -43,8 +43,23 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                {{--             links de pagination da table--}}
                 {{ $fornecedores->appends($request)->links() }}
+                Exibindo {{ $fornecedores->count() }} fornecedores de {{ $fornecedores->total() }}
+                <br>
+                (de {{ $fornecedores->firstItem() }} a {{ $fornecedores->lastItem() }})
+
+{{--             exibe o total de itens por pagina--}}
+{{--                {{ $fornecedores->count() }} - Total de registros por página--}}
+{{--                <br>--}}
+{{--             exibe o total de registro consultados--}}
+{{--                {{ $fornecedores->total() }} - Total de registros da consulta--}}
+{{--                <br>--}}
+{{-- exibe o numero do primeiro registor da pagina (não se baseia em id e sim pela ordem de exibição)--}}
+{{--                {{ $fornecedores->firstItem() }} - numero do primeiro registro da pagina--}}
+{{--                <br>--}}
+{{-- exibe o numero do ultimo registor da pagina (não se baseia em id e sim pela ordem de exibição)--}}
+{{--                {{ $fornecedores->lastItem() }} - numero do ultimo registro da pagina--}}
             </div>
         </div>
 
