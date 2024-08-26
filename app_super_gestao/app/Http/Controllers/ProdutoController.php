@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Fornecedor;
 use App\Produto;
+use App\Unidade;
 use Illuminate\Http\Request;
 use function view;
 
@@ -28,7 +29,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        echo 'create';
+        $unidades = Unidade::all();
+        return view('app.produto.create', ['unidades' => $unidades]);
     }
 
     /**
