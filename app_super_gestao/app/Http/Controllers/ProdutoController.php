@@ -19,7 +19,6 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
         $produtos = Produto::paginate(10);
-
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
@@ -31,7 +30,6 @@ class ProdutoController extends Controller
     public function create()
     {
         $unidades = Unidade::all();
-        
         return view('app.produto.create', ['unidades' => $unidades]);
     }
 
@@ -43,8 +41,26 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        Produto::create($request->all());
+        $regras = [
+            'nome' => 'required|min:3|max:40',
+            'descricao' => 'required|min:3|max:2000',
+            'peso' => 'required|integer',
+            'unidade_id' => 'exists:unidades,id'
+        ];
 
+        $feedback = [
+            'required' => 'O campo :attribute deve ser preenchido.',
+            'nome.min' => 'O campo nome deve ter no minimo 3 caracteres.',
+            'nome.max' => 'O campo nome deve ter no maximo 40 caracteres.',
+            'descricao.min' => 'O campo descrição deve ter no minimo 3 caracteres.',
+            'descricao.max' => 'O campo descrição deve ter no maximo 2000 caracteres.',
+            'peso.integer' => 'O campo peso deve ser um numero inteiro.',
+            'unidade_id.exists' => 'A unidade informada não existe.'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        Produto::create($request->all());
         return redirect()->route('produto.index');
     }
 
