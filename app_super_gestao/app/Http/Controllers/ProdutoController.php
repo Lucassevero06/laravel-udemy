@@ -6,6 +6,7 @@ use App\Fornecedor;
 use App\Produto;
 use App\Unidade;
 use Illuminate\Http\Request;
+use function dd;
 use function redirect;
 use function view;
 
@@ -72,7 +73,7 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**
