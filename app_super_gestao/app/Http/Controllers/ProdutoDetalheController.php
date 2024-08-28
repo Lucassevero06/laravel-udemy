@@ -18,7 +18,7 @@ class ProdutoDetalheController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -52,7 +52,7 @@ class ProdutoDetalheController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -88,6 +88,6 @@ class ProdutoDetalheController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
