@@ -57,6 +57,7 @@
                     @endforeach
                     </tbody>
                 </table>
+
                 {{--             links de pagination da table--}}
                 {{ $produtos->appends($request)->links() }}
                 Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }}
