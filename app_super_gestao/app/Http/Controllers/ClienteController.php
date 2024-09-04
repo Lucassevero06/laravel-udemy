@@ -47,7 +47,7 @@ class ClienteController extends Controller
         ];
 
         $request->validate($regras, $feedback);
-        
+
         $cliente = new Cliente();
         $cliente->nome = $request->get('nome');
         $cliente->save();
