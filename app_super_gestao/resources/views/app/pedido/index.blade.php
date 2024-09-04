@@ -31,17 +31,17 @@
                     <tbody>
                     @foreach($pedidos as $pedido)
                         <tr>
-                            <td></td>
-                            <td>}</td>
-                            <td><a href="{{ route('pedido.show', ['produto' => $pedido->id]) }}">Vizualizar</a></td>
+                            <td>{{ $pedido->id }}</td>
+                            <td>{{ $pedido->cliente_id }}</td>
+                            <td><a href="{{ route('pedido.show', ['pedido' => $pedido->id]) }}">Visualizar</a></td>
                             <td>
-                                <form id="form_{{$pedido->id}}" method="post" action="{{ route('pedido.destroy', ['produto' => $pedido->id]) }}">
+                                <form id="form_{{$pedido->id}}" method="post" action="{{ route('pedido.destroy', ['pedido' => $pedido->id]) }}">
                                     @method('DELETE')
                                     @csrf
                                     <a href="#" onclick="document.getElementById('form_{{$pedido->id}}').submit()">Excluir</a>
                                 </form>
                             </td>
-                            <td><a href="{{ route('pedido.edit', ['produto' => $pedido->id]) }}">Editar</a></td>
+                            <td><a href="{{ route('pedido.edit', ['pedido' => $pedido->id]) }}">Editar</a></td>
                         </tr>
                     @endforeach
                     </tbody>
