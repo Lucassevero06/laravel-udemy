@@ -117,10 +117,12 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedido $pedido, Produto $produto)
+    public function destroy(PedidoProduto $pedidoProduto, $pedido_id)
     {
         //detach (delete pelo relacionamento)
-        $pedido->produtos()->detach($produto->id);
-        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
+//        $pedido->produtos()->detach($produto->id);
+
+        $pedidoProduto->delete();
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido_id]);
     }
 }
