@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TarefaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,34 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+        $name = auth()->user()->name;
+        $email = auth()->user()->email;
+
+        return "ID: $id | Nome: $name | Email: $email";
+
+        /*
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $name = Auth::user()->name;
+            $email = Auth::user()->email;
+
+            return "ID: $id | Nome: $name | Email: $email";
+        } else {
+            return 'voce NÃO está logado no sistema';
+        }
+        */
+        /*
+        if (auth()->check()) {
+            $id = auth()->user()->id;
+            $name = auth()->user()->name;
+            $email = auth()->user()->email;
+
+            return "ID: $id | Nome: $name | Email: $email";
+        } else {
+            return 'voce NÃO está logado no sistema';
+        }
+        */
     }
 
     /**
